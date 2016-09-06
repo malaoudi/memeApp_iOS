@@ -19,16 +19,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomToolBar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
+    
+    
     // character attributes
-    let memeTextAttributes = [
+    var memeTextAttributes = [
         NSStrokeColorAttributeName : UIColor.blackColor(),
         NSForegroundColorAttributeName : UIColor.whiteColor(),
-       // NSStrokeColorAttributeName : UIColor.blueColor(),
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName : -3.0
+        NSStrokeWidthAttributeName : -3.0,
     ]
     
-
+    // obtain screen width
+    let screenWidth = UIScreen.mainScreen().bounds.width
     
     //**************************
     // Life Cycle Methods
@@ -37,15 +39,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // dont forget to assign the buttons delegates
+        // assign the textfields as delegates
         self.topTextField.delegate = self
         self.bottomTextField.delegate = self
         
-        // set the attributes for the textLabels
-        self.topTextField.text = "TOP"
-        self.bottomTextField.text = "BOTTOM"
-        self.topTextField.textAlignment = NSTextAlignment.Center
-        self.bottomTextField.textAlignment = NSTextAlignment.Center
+        // set the default attributes for the textLabels
+//        self.topTextField.text = "TOP"
+//        self.bottomTextField.text = "BOTTOM"
+        
         
         // disable button initially
         shareButton.enabled = false
@@ -58,10 +59,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        // incase the device doesnt have a camera, disable the cameraButton
+        // in case the device doesnt have a camera, disable the cameraButton
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
-        // set the character attrivutes to the characters in the TextField
+        // center the text
+        let style = NSMutableParagraphStyle()
+        style.alignment = NSTextAlignment.Center
+        memeTextAttributes[NSParagraphStyleAttributeName] = style
+        
+        // set the character attributes to for the TextField
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
         
@@ -108,6 +114,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // clear the text when the textField is selected
     func textFieldDidBeginEditing(textField: UITextField){
         textField.text = ""
+        self.topTextField.frame.size.width = screenWidth
     }
     
     // dismiss the keyboard when pressing return

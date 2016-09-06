@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mow-gD-0WN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mow-gD-0WN">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -39,12 +39,12 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="bottom" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="oBC-oI-WZe">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="oBC-oI-WZe">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="top" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="J49-Gl-5WD">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="J49-Gl-5WD">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -52,10 +52,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="oBC-oI-WZe" secondAttribute="trailing" constant="8" id="9fZ-YH-T9y"/>
                             <constraint firstItem="FOr-ku-8K4" firstAttribute="top" secondItem="Jw6-EX-Xaq" secondAttribute="bottom" id="LC2-z1-YVU"/>
                             <constraint firstItem="J49-Gl-5WD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" identifier="5" id="LJk-8w-37v"/>
+                            <constraint firstItem="oBC-oI-WZe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="LQr-h2-Rut"/>
                             <constraint firstItem="oBC-oI-WZe" firstAttribute="top" secondItem="J49-Gl-5WD" secondAttribute="bottom" constant="256" id="Ms2-0T-e2h">
-                                <variation key="widthClass=compact" constant="290"/>
+                                <variation key="widthClass=compact" constant="286"/>
                             </constraint>
                             <constraint firstItem="FOr-ku-8K4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SKR-nb-4f9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jw6-EX-Xaq" secondAttribute="trailing" constant="-20" identifier="2" id="ULO-zH-fUO"/>
@@ -64,8 +66,10 @@
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="FOr-ku-8K4" firstAttribute="top" secondItem="Jw6-EX-Xaq" secondAttribute="bottom" id="dhx-fc-ihJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J49-Gl-5WD" secondAttribute="trailing" constant="8" id="iRu-Kr-2RV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FOr-ku-8K4" secondAttribute="trailing" constant="-20" identifier="11" id="rBp-hV-sti"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FOr-ku-8K4" secondAttribute="bottom" id="rkw-EH-6BH"/>
+                            <constraint firstItem="J49-Gl-5WD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="rru-gr-G1M"/>
                             <constraint firstItem="Jw6-EX-Xaq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="tQo-9Z-ZAj">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
@@ -82,8 +86,14 @@
                                 <exclude reference="J49-Gl-5WD"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="rkw-EH-6BH"/>
+                                <exclude reference="ULO-zH-fUO"/>
+                                <exclude reference="V2Y-bn-DhY"/>
+                                <exclude reference="tQo-9Z-ZAj"/>
                                 <exclude reference="LJk-8w-37v"/>
+                                <exclude reference="iRu-Kr-2RV"/>
+                                <exclude reference="rru-gr-G1M"/>
+                                <exclude reference="9fZ-YH-T9y"/>
+                                <exclude reference="LQr-h2-Rut"/>
                                 <exclude reference="Ms2-0T-e2h"/>
                                 <exclude reference="aRN-PP-1Bp"/>
                                 <exclude reference="LC2-z1-YVU"/>
@@ -92,9 +102,7 @@
                                 <exclude reference="rBp-hV-sti"/>
                                 <exclude reference="wjL-wV-RGh"/>
                                 <exclude reference="x3e-gv-p7h"/>
-                                <exclude reference="ULO-zH-fUO"/>
-                                <exclude reference="V2Y-bn-DhY"/>
-                                <exclude reference="tQo-9Z-ZAj"/>
+                                <exclude reference="rkw-EH-6BH"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -105,8 +113,14 @@
                                 <include reference="J49-Gl-5WD"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="rkw-EH-6BH"/>
+                                <include reference="ULO-zH-fUO"/>
+                                <include reference="V2Y-bn-DhY"/>
+                                <include reference="tQo-9Z-ZAj"/>
                                 <include reference="LJk-8w-37v"/>
+                                <include reference="iRu-Kr-2RV"/>
+                                <include reference="rru-gr-G1M"/>
+                                <include reference="9fZ-YH-T9y"/>
+                                <include reference="LQr-h2-Rut"/>
                                 <include reference="Ms2-0T-e2h"/>
                                 <include reference="aRN-PP-1Bp"/>
                                 <include reference="LC2-z1-YVU"/>
@@ -115,9 +129,7 @@
                                 <include reference="rBp-hV-sti"/>
                                 <include reference="wjL-wV-RGh"/>
                                 <include reference="x3e-gv-p7h"/>
-                                <include reference="ULO-zH-fUO"/>
-                                <include reference="V2Y-bn-DhY"/>
-                                <include reference="tQo-9Z-ZAj"/>
+                                <include reference="rkw-EH-6BH"/>
                             </mask>
                         </variation>
                     </view>
@@ -144,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1333" y="403"/>
+            <point key="canvasLocation" x="1332" y="403"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Yuc-1A-pAu">
