@@ -22,23 +22,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jw6-EX-Xaq">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOr-ku-8K4">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem width="59" style="plain" systemItem="fixedSpace" id="k9b-uW-0mC"/>
-                                    <barButtonItem title="Library" id="Kjz-7P-esF">
-                                        <connections>
-                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="011-eG-DqJ"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="68" style="plain" systemItem="fixedSpace" id="ht4-4t-CNq"/>
-                                    <barButtonItem title="Camera" id="aC6-zb-mcI">
-                                        <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="GUR-fv-fvq"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="oBC-oI-WZe">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -49,6 +32,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOr-ku-8K4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dDC-ED-ddF"/>
+                                    <barButtonItem systemItem="organize" id="Kjz-7P-esF">
+                                        <connections>
+                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="011-eG-DqJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="WuY-cz-JHP"/>
+                                    <barButtonItem systemItem="camera" id="aC6-zb-mcI">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="GUR-fv-fvq"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="8V2-QM-pIa"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -81,9 +82,9 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Jw6-EX-Xaq"/>
-                                <exclude reference="FOr-ku-8K4"/>
                                 <exclude reference="oBC-oI-WZe"/>
                                 <exclude reference="J49-Gl-5WD"/>
+                                <exclude reference="FOr-ku-8K4"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="ULO-zH-fUO"/>
@@ -108,9 +109,9 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Jw6-EX-Xaq"/>
-                                <include reference="FOr-ku-8K4"/>
                                 <include reference="oBC-oI-WZe"/>
                                 <include reference="J49-Gl-5WD"/>
+                                <include reference="FOr-ku-8K4"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="ULO-zH-fUO"/>
@@ -300,9 +301,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="EPw-qI-v0v"/>
-                    <connections>
-                        <outlet property="tableViewDisplay" destination="sDo-Ix-zQm" id="SMP-0Q-UAw"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXg-o8-Woi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

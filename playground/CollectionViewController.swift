@@ -25,10 +25,9 @@ class CollectionViewController: UICollectionViewController {
     var height: CGFloat = 0.0;
     
 
-    // obtain array of Meme's saved in AppDelegate
-    var memes: [Meme]{
-        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
-    }
+    // obtain array of Meme from persistent storage
+    var memes: MemeArray = MemeArray()
+    var imageStore: ImageStore = ImageStore()
     
     //**************************
     // Lifecyle Methods
@@ -104,15 +103,15 @@ class CollectionViewController: UICollectionViewController {
     //**************************
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return memes.count
+        return memes.allMemes.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CustomMemeCell", forIndexPath: indexPath) as! CustomMemeCell
-        let meme = memes[indexPath.item]
+        let meme = memes.allMemes[indexPath.item]
         //cell.setText(meme.top, bottomString: meme.bottom)
-        let imageView = UIImageView(image: meme.image)
+        let imageView = UIImageView(image: imageStore.imageForKey(meme.memeKey))
         cell.backgroundView = imageView
         //cell.imageViewCell = imageView
         
@@ -121,10 +120,10 @@ class CollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // obtain the meme image that was selected
-        let meme = self.memes[indexPath.row]
+        let meme = self.memes.allMemes[indexPath.row]
         
         // create ActivityViewController, passing the memeImage to it
-        let controller = UIActivityViewController(activityItems: [meme.memedImage!], applicationActivities: nil)
+        let controller = UIActivityViewController(activityItems: [imageStore.imageForKey(meme.memeKey)!], applicationActivities: nil)
         self.presentViewController(controller, animated: true, completion: nil)
     }
 }

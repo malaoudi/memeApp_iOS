@@ -20,7 +20,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
     
-    
     // character attributes
     var memeTextAttributes = [
         NSStrokeColorAttributeName : UIColor.blackColor(),
@@ -32,6 +31,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // obtain screen width
     let screenWidth = UIScreen.mainScreen().bounds.width
     
+    // property
+    var imageStore: ImageStore = ImageStore()
+    var memeArray: MemeArray = MemeArray()
+    
     //**************************
     // Life Cycle Methods
     //**************************
@@ -42,11 +45,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // assign the textfields as delegates
         self.topTextField.delegate = self
         self.bottomTextField.delegate = self
-        
-        // set the default attributes for the textLabels
-//        self.topTextField.text = "TOP"
-//        self.bottomTextField.text = "BOTTOM"
-        
         
         // disable button initially
         shareButton.enabled = false
@@ -175,7 +173,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // make the imagePicker a delegate so that it will follow the methods written above
         // by becoming a delegate, all calls now go through the above methods
-        imagePicker.delegate = self // set the delegate before launching the UIImagePickerViewController
+        // set the delegate before launching the UIImagePickerViewController
+        imagePicker.delegate = self
         
         // pring up the UIImagePickerController
         self.presentViewController(imagePicker, animated: true, completion: nil)
@@ -197,15 +196,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //**************************
     
     @IBAction func save(sender: AnyObject) {
+        // Create the Meme, the memedImage is a combination of the Image plus overlayed text
         let memeImage = generateMemedImage()
         
-        // Create the Meme, the memedImage is a combination of the Image plus overlayed text
-        let meme = Meme( topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: memeImage)
+        // create a new Meme
+        // this automatically creates a unique 'memeKey'
+        // which is used to find the location of the image
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!)
         
-        // Add the Meme to the meme array in App Delegate
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(meme)
+        // add the Meme to the MemeArray
+        // the MemeArray is needed for the UITableView
+        memeArray.addMeme(meme)
+        memeArray.saveChanges()
+        
+        // store the image using the ImageStore class
+        imageStore.setImage(memeImage, forKey: meme.memeKey)
         
         // create ActivityViewController, passing the memeImage to it
         let controller = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil)
