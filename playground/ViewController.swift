@@ -97,9 +97,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     // method called when an image is selected after bring up the UIImagePickerViewController
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+    func imagePickerController(picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : AnyObject]){
+        
         // obtains an image from the UIImagePickerViewController via calling a dictionary
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            // set the selected image to the UIImageView
             imagePickerView.image = pickedImage
         }
         
@@ -114,7 +117,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // clear the text when the textField is selected
     func textFieldDidBeginEditing(textField: UITextField){
         textField.text = ""
-        self.topTextField.frame.size.width = screenWidth
     }
     
     // dismiss the keyboard when pressing return
@@ -168,16 +170,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //**************************
     
     @IBAction func pickAnImage(sender: AnyObject) {
+        // create an UIImagePickerController
         let imagePicker = UIImagePickerController()
+        
         // make the imagePicker a delegate so that it will follow the methods written above
         // by becoming a delegate, all calls now go through the above methods
         imagePicker.delegate = self // set the delegate before launching the UIImagePickerViewController
+        
+        // pring up the UIImagePickerController
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
+        
         imagePicker.delegate = self
+        
         // need a way to specify whether an image is coming from the album or the camera
         // https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIImagePickerController_Class/index.html#//apple_ref/c/tdef/UIImagePickerControllerSourceType
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera

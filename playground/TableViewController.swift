@@ -19,7 +19,6 @@ class TableViewController: UITableViewController{
     // outlets
     @IBOutlet var tableViewDisplay: UITableView!
 
-    
     // obtain array of Meme's saved in AppDelegate
     var memes: [Meme]{
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
@@ -31,14 +30,12 @@ class TableViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        super.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "back", style: .Plain, target: self, action: #selector(self.startOver))
     }
     
     //**************************
     // Table Methods
     //**************************
 
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
